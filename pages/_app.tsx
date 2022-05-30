@@ -6,8 +6,6 @@ import AuthStateChanged from '../src/layout/AuthStateChanged'
 import AppLayout from '../src/layout/AppLayout'
 import { AppProps } from 'next/app'
 
-// type ComponetType = ReactNode
-
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
