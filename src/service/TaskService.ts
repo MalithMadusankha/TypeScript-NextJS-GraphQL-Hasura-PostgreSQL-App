@@ -24,7 +24,7 @@ export default async function Tasks() {
   } catch (error) {}
 }
 
-export async function CreateTask(taskName, description) {
+export async function CreateTask(taskName: any, description: any) {
   let results = await fetch('https://m-demo-1.hasura.app/v1/graphql', {
     method: 'POST',
     headers: new Headers({

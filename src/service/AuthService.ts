@@ -8,17 +8,19 @@ import {
 } from 'firebase/auth'
 
 class AuthService {
-  constructor(firebaseApp) {
+  auth: any
+  
+  constructor(firebaseApp:any) {
     this.auth = getAuth(firebaseApp)
   }
 
-  waitForUser(callback) {
+  waitForUser(callback:any) {
     return onAuthStateChanged(this.auth, (userCred) => {
       callback(userCred)
     })
   }
 
-  async SignIn(email, password) {
+  async SignIn(email: any, password: any) {
     return signInWithEmailAndPassword(this.auth, email, password)
       .then((userCred) => {
         return {
@@ -32,7 +34,7 @@ class AuthService {
       })
   }
 
-  async SignUp(email, password) {
+  async SignUp(email: any, password: any) {
     return createUserWithEmailAndPassword(this.auth, email, password)
       .then((userCred) => {
         return {

@@ -3,12 +3,12 @@ import Loading from '../../components/loading'
 import useAuth from '../hook/auth'
 import AuthService from '../service/AuthService'
 
-export default function AuthStateChanged({ children }) {
-  const { setUser } = useAuth()
-  const [loading, setLoading] = useState(true)
+export default function AuthStateChanged({ children }: any) {
+  const { setUser }: any = useAuth()
+  const [loading, setLoading] = useState<any>(true)
 
   useEffect(() => {
-    AuthService.waitForUser((userCred) => {
+    AuthService.waitForUser((userCred: any) => {
       setUser(userCred)
       setLoading(false)
     })
