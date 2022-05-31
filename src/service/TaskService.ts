@@ -1,4 +1,3 @@
-import useAuth from '../hook/auth'
 
 export default async function Tasks() {
   try {
@@ -24,7 +23,7 @@ export default async function Tasks() {
   } catch (error) {}
 }
 
-export async function CreateTask(taskName: any, description: any) {
+export async function CreateTask(taskName: string, description: string) {
   let results = await fetch('https://m-demo-1.hasura.app/v1/graphql', {
     method: 'POST',
     headers: new Headers({

@@ -20,7 +20,7 @@ class AuthService {
     })
   }
 
-  async SignIn(email: any, password: any) {
+  async SignIn(email: string, password: string) {
     return signInWithEmailAndPassword(this.auth, email, password)
       .then((userCred) => {
         return {
@@ -34,7 +34,7 @@ class AuthService {
       })
   }
 
-  async SignUp(email: any, password: any) {
+  async SignUp(email: string, password: string) {
     return createUserWithEmailAndPassword(this.auth, email, password)
       .then((userCred) => {
         return {

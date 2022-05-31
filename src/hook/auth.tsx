@@ -12,7 +12,7 @@ export default function useAuth() {
 }
 
 export function AuthProvider(props: any) {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState<object|null>(null)
   const [error, setError] = useState('')
 
   const login = async (email: any, password: any) => {
