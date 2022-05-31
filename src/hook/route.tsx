@@ -2,10 +2,9 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import useAuth from './auth'
 import Loading from '../../components/loading'
-import {NextComponentType, GetStaticProps} from 'next'
-import { AppProps } from 'next/app'
+import {NextComponentType} from 'next'
 
-export function withPublic(Component: any) {
+export function withPublic(Component: NextComponentType) {
   return function WithPublic(props:any) {
     const auth: any = useAuth()
     const router = useRouter()
@@ -22,7 +21,7 @@ export function withPublic(Component: any) {
   }
 }
 
-export function withProtected(Component:any) {
+export function withProtected(Component:NextComponentType) {
   return function WithProtected(props:any) {
     const auth: any = useAuth()
     const router = useRouter()
