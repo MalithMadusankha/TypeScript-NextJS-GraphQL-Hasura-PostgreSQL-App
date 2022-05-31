@@ -3,7 +3,7 @@ import React from 'react'
 import Navbar from '../../components/navbar'
 import useAuth from '../hook/auth'
 
-export default function AppLayout({ children }) {
+export default function AppLayout({ children }: any) {
   const auth = useAuth()
 
   const router = useRouter()

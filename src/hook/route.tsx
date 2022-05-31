@@ -2,10 +2,12 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import useAuth from './auth'
 import Loading from '../../components/loading'
+import {NextComponentType, GetStaticProps} from 'next'
+import { AppProps } from 'next/app'
 
-export function withPublic(Component) {
-  return function WithPublic(props) {
-    const auth = useAuth()
+export function withPublic(Component: any) {
+  return function WithPublic(props:any) {
+    const auth: any = useAuth()
     const router = useRouter()
 
     if (auth.user) {
@@ -20,9 +22,9 @@ export function withPublic(Component) {
   }
 }
 
-export function withProtected(Component) {
-  return function WithProtected(props) {
-    const auth = useAuth()
+export function withProtected(Component:any) {
+  return function WithProtected(props:any) {
+    const auth: any = useAuth()
     const router = useRouter()
 
     if (!auth.user) {

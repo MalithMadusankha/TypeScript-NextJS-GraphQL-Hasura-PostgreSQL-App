@@ -6,7 +6,7 @@ import AuthStateChanged from '../src/layout/AuthStateChanged'
 import AppLayout from '../src/layout/AppLayout'
 import { AppProps } from 'next/app'
 
-const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <AuthProvider>
@@ -20,4 +20,4 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   )
 }
 
-export default MyApp
+// export default MyApp

@@ -8,7 +8,12 @@ import { MdLockOutline } from 'react-icons/md'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
-const Login = ({ auth }) => {
+type AuthType = {
+  signUp: (email: string, password: string) => void, 
+  login: (email: string, password: string) => void
+}
+
+const Login = ({ auth }:any) => {
   const router = useRouter()
   const { signUp, login } = auth
   const [signInEmail, setSignInEmail] = useState('')
@@ -19,9 +24,9 @@ const Login = ({ auth }) => {
   const [isMatchPassword, setIsMatchPassword] = useState(
     'flex w-64 items-center rounded-xl bg-gray-100 p-1'
   )
-  const [isMatch, setIsMatch] = useState(true)
+  const [isMatch, setIsMatch] = useState<any>(true)
 
-  const handleSignUp = async (e) => {
+  const handleSignUp = async (e:any) => {
     e.preventDefault()
     try {
       if (signUpPassword === confirmPassword) {
@@ -36,7 +41,7 @@ const Login = ({ auth }) => {
     } catch (err) {}
   }
 
-  const handleSignIn = async (e) => {
+  const handleSignIn = async (e:any) => {
     e.preventDefault()
     try {
       // SignIn(signInEmail, signInPassword)

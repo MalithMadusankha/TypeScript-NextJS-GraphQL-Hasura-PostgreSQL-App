@@ -4,12 +4,12 @@ import Tasks, { CreateTask } from '../src/service/TaskService'
 import { withProtected } from '../src/hook/route'
 import { VscLoading } from 'react-icons/vsc'
 
-function Dashboard({ tasks }) {
+function Dashboard({ tasks }:any) {
   const [taskName, setTaskName] = useState('')
   const [description, setDescription] = useState('')
   const [loading, setLoading] = useState(false)
   const router = useRouter()
-  const handleSubmite = async (e) => {
+  const handleSubmite = async (e:any) => {
     e.preventDefault()
     try {
       setLoading(true)
@@ -25,7 +25,7 @@ function Dashboard({ tasks }) {
     <>
       <div>
         <div className="mx-5 mt-5">
-          <h2 className="text-2xl font-semibold text-blue-500" href="/">
+          <h2 className="text-2xl font-semibold text-blue-500">
             Dashboard
           </h2>
           <div className="ml-9 mb-2 inline-block w-10 border-2 border-blue-500"></div>
@@ -63,7 +63,7 @@ function Dashboard({ tasks }) {
                   </label>
                   <textarea
                     id="description"
-                    rows="4"
+                    rows={4}
                     className="block w-full rounded-xl border border-gray-300 bg-gray-50 p-2.5 text-sm text-black outline-none focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                     placeholder="Brefly describe your task . . ."
                     onChange={(e) => setDescription(e.target.value)}
@@ -96,7 +96,7 @@ function Dashboard({ tasks }) {
             <div className="flex flex-wrap">
               {tasks &&
                 tasks.tasks.length > 0 &&
-                tasks.tasks.map((task, key) => {
+                tasks.tasks.map((task:any, key:any) => {
                   return (
                     <a
                       key={key}
