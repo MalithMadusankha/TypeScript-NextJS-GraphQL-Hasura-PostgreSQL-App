@@ -1,6 +1,8 @@
 import Link from 'next/link'
-export default function Navbar({ auth }) {
-  const { logout } = auth
+import AuthType from '../src/util/customTypes'
+
+export default function Navbar({ auth }: any) {
+  const { logout }: any = auth
   return (
     <nav className="flex  items-center bg-blue-500 px-4 py-1 drop-shadow-md filter">
       <div className="flex w-4/12  items-center text-white">

@@ -5,10 +5,10 @@ import AuthService from '../service/AuthService'
 
 export default function AuthStateChanged({ children }: any) {
   const { setUser }: any = useAuth()
-  const [loading, setLoading] = useState<any>(true)
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    AuthService.waitForUser((userCred: any) => {
+    AuthService.waitForUser((userCred: object | undefined | null) => {
       setUser(userCred)
       setLoading(false)
     })
