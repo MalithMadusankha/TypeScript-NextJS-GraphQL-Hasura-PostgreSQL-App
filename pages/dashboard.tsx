@@ -3,7 +3,11 @@ import { useRouter } from 'next/router'
 import Tasks, { CreateTask } from '../src/service/TaskService'
 import { withProtected } from '../src/hook/route'
 import { VscLoading } from 'react-icons/vsc'
-import { TaskType } from '../src/util/customTypes'
+
+type TaskType = {
+  task_name: string
+  description: string
+}
 
 function Dashboard({ tasks }: any) {
   const [taskName, setTaskName] = useState<string>('')
