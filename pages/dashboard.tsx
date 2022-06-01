@@ -150,15 +150,6 @@ function Dashboard({ tasks }: any) {
                 </h5>
                 <div className="ml-7 mb-2 inline-block w-10 border-2 border-blue-500"></div>
               </div>
-              <button
-                type="button"
-                className="bg-red-500"
-                onClick={() => {
-                  throw new Error('Sentry Frontend Error MMs')
-                }}
-              >
-                Throw error
-              </button>
               <div className="flex flex-wrap">
                 {tasks &&
                   tasks.tasks.length > 0 &&
