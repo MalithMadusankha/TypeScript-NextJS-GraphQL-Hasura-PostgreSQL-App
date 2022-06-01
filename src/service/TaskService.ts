@@ -1,11 +1,11 @@
-
+const hasuraAuthHeader: any = process.env.NEXT_PUBLIC_X_HASURA_ADMIN_SECRET 
+const hasuraURL: any = process.env.NEXT_PUBLIC_HASURA_URL
 export default async function Tasks() {
   try {
-    let results = await fetch('https://m-demo-1.hasura.app/v1/graphql', {
+    let results = await fetch(hasuraURL, {
       method: 'POST',
       headers: new Headers({
-        'x-hasura-admin-secret':
-          'xXx2JTXihpVXh8O0KIkaacazZLFiRQ4jQqVhAnaMvyNr131tmuEFRjrTNhXGwH04',
+        'x-hasura-admin-secret':hasuraAuthHeader,
         'Content-Type': 'application/json',
       }),
 
@@ -24,11 +24,10 @@ export default async function Tasks() {
 }
 
 export async function CreateTask(taskName: string, description: string) {
-  let results = await fetch('https://m-demo-1.hasura.app/v1/graphql', {
+  let results = await fetch(hasuraURL, {
     method: 'POST',
     headers: new Headers({
-      'x-hasura-admin-secret':
-        'xXx2JTXihpVXh8O0KIkaacazZLFiRQ4jQqVhAnaMvyNr131tmuEFRjrTNhXGwH04',
+      'x-hasura-admin-secret':hasuraAuthHeader,
       'Content-Type': 'application/json',
     }),
 
