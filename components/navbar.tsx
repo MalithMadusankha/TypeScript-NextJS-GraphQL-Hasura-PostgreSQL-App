@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import AuthType from '../src/util/customTypes'
 
 export default function Navbar({ auth }: any) {
   const { logout }: any = auth
