@@ -1,5 +1,6 @@
 const hasuraAuthHeader: any = process.env.NEXT_PUBLIC_X_HASURA_ADMIN_SECRET 
 const hasuraURL: any = process.env.NEXT_PUBLIC_HASURA_URL
+// Fetch Tasks
 export default async function Tasks() {
   try {
     let results = await fetch(hasuraURL, {
@@ -22,7 +23,7 @@ export default async function Tasks() {
     return tasks
   } catch (error) {}
 }
-
+// Create task
 export async function CreateTask(taskName: string, description: string) {
   let results = await fetch(hasuraURL, {
     method: 'POST',

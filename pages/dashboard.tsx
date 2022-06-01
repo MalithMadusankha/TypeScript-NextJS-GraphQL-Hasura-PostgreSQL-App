@@ -37,6 +37,7 @@ function Dashboard({ tasks }: any) {
 
   return (
     <>
+      {/* Checking errors */}
       {isError ? (
         <div
           id="alert-2"
@@ -85,6 +86,7 @@ function Dashboard({ tasks }: any) {
             <h2 className="text-2xl font-semibold text-blue-500">Dashboard</h2>
             <div className="ml-9 mb-2 inline-block w-10 border-2 border-blue-500"></div>
           </div>
+          {/* Create task form */}
           <div className="md:grid md:grid-cols-3 md:gap-6">
             <div className="md:col-span-1">
               <div className="m-5 max-w-sm rounded-2xl border border-gray-200 bg-blue-500 p-4 shadow-md dark:border-gray-700 sm:p-6 lg:p-8">
@@ -142,7 +144,7 @@ function Dashboard({ tasks }: any) {
                 </form>
               </div>
             </div>
-
+            {/* Task list view */}
             <div className=" md:col-span-2 md:mt-0">
               <div className="mt-5">
                 <h5 className="text-2xl font-medium text-blue-500 ">
@@ -183,7 +185,7 @@ function Dashboard({ tasks }: any) {
     </>
   )
 }
-
+// Fetch tasks
 export async function getStaticProps() {
   let tasks = await Tasks()
   if (tasks) {
