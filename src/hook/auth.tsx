@@ -16,7 +16,6 @@ export function AuthProvider(props: any) {
   const [error, setError] = useState('')
 
   const login = async (email: any, password: any) => {
-    console.log(email, password)
     const { error, user }: any = await AuthService.SignIn(email, password)
     setUser(user ?? null)
     setError(error ?? '')
