@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from 'react'
 import AuthService from '../service/AuthService'
 
 type Result = {
-  error: any,
+  error: any
   user: any
 }
 const authContext = createContext(AuthProvider)
@@ -12,12 +12,12 @@ export default function useAuth() {
 }
 
 export function AuthProvider(props: any) {
-  const [user, setUser] = useState<object|null>(null)
+  const [user, setUser] = useState<object | null>(null)
   const [error, setError] = useState('')
 
   const login = async (email: any, password: any) => {
     console.log(email, password)
-    const { error:any, user }: any = await AuthService.SignIn(email, password)
+    const { error, user }: any = await AuthService.SignIn(email, password)
     setUser(user ?? null)
     setError(error ?? '')
   }
