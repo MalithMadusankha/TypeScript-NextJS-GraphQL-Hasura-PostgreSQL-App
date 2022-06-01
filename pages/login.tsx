@@ -5,29 +5,31 @@ import { FaRegEnvelope } from 'react-icons/fa'
 import { MdLockOutline } from 'react-icons/md'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { VscLoading } from 'react-icons/vsc'
 
 const Login = ({ auth }: any) => {
   const router = useRouter()
   const { signUp, login } = auth
-  const [signInEmail, setSignInEmail] = useState('')
-  const [signInPassword, setSignInPassword] = useState('')
-  const [signUpEmail, setSignUpEmail] = useState('')
-  const [signUpPassword, setSignUpPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [isMatchPassword, setIsMatchPassword] = useState(
-    'flex w-64 items-center rounded-xl bg-gray-100 p-1'
-  )
+  const [signInEmail, setSignInEmail] = useState<string>('')
+  const [signInPassword, setSignInPassword] = useState<string>('')
+  const [signUpEmail, setSignUpEmail] = useState<string>('')
+  const [signUpPassword, setSignUpPassword] = useState<string>('')
+  const [confirmPassword, setConfirmPassword] = useState<string>('')
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isMatch, setIsMatch] = useState<boolean>(true)
 
   const handleSignUp = async (e: any) => {
     e.preventDefault()
     try {
       if (signUpPassword === confirmPassword) {
+        setIsLoading(true)
         setIsMatch(true)
         await signUp(signUpEmail, signUpPassword)
+        setIsLoading(false)
         router.push('/dashboard')
       } else {
         setIsMatch(false)
+        setIsLoading(false)
       }
     } catch (err) {}
   }
@@ -184,13 +186,18 @@ const Login = ({ auth }: any) => {
                   </div>
                 )}
               </div>
-
-              <button
-                type="submit"
-                className="inline-block rounded-full border-2 border-white py-2 px-12 font-semibold hover:bg-white hover:text-blue-500"
-              >
-                Sign Up
-              </button>
+              {isLoading ? (
+                <div className="inline-block rounded-full border-2 border-white py-2 px-12 font-semibold text-white hover:bg-white hover:text-blue-500">
+                  <VscLoading className="mr-3 animate-spin text-2xl" />
+                </div>
+              ) : (
+                <button
+                  type="submit"
+                  className="inline-block rounded-full border-2 border-white py-2 px-12 font-semibold hover:bg-white hover:text-blue-500"
+                >
+                  Sign Up
+                </button>
+              )}
             </form>
           </div>
         </div>
