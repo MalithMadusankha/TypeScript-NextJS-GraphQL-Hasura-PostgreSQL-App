@@ -18,11 +18,11 @@ function Dashboard() {
   const [tasks, setTasks] = useState<any>(null)
   const [refresh, setRefresh] = useState<number>(0)
   const [increment, setIncrement] = useState<number>(0)
+
+  // getting tasks
   useEffect(() => {
     setLoading(true)
     Tasks().then((data) => {
-      console.log('d', data)
-
       setTasks(data.data)
       setLoading(false)
     })
