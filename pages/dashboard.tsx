@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Tasks, { CreateTask } from '../src/service/TaskService'
 import { withProtected } from '../src/hook/route'
@@ -9,12 +9,25 @@ type TaskType = {
   description: string
 }
 
-function Dashboard({ tasks }: any) {
+function Dashboard() {
   const [taskName, setTaskName] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
   const [isError, setIsError] = useState<boolean>(false)
   const router = useRouter()
+  const [tasks, setTasks] = useState<any>(null)
+  const [refresh, setRefresh] = useState<number>(0)
+  const [increment, setIncrement] = useState<number>(0)
+  useEffect(() => {
+    setLoading(true)
+    Tasks().then((data) => {
+      console.log('d', data)
+
+      setTasks(data.data)
+      setLoading(false)
+    })
+  }, [refresh])
+
   const handleSubmite = async (e: any) => {
     e.preventDefault()
     try {
@@ -27,8 +40,8 @@ function Dashboard({ tasks }: any) {
         setLoading(false)
         setIsError(true)
       }
-
-      router.push('/dashboard')
+      setIncrement(increment + 1)
+      setRefresh(increment)
     } catch (error) {
       setLoading(false)
       setIsError(true)
@@ -184,23 +197,6 @@ function Dashboard({ tasks }: any) {
       )}
     </>
   )
-}
-// Fetch tasks
-export async function getStaticProps() {
-  let tasks = await Tasks()
-  if (tasks) {
-    return {
-      props: {
-        tasks: tasks.data,
-      },
-    }
-  } else {
-    return {
-      props: {
-        tasks: null,
-      },
-    }
-  }
 }
 
 export default withProtected(Dashboard)
